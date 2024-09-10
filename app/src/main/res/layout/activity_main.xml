@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context=".MainActivity">
 
     <EditText
@@ -14,6 +15,9 @@
         android:ems="10"
         android:hint="Enter value to convert"
         android:inputType="number"
+        android:textColor="#32CD32"
+        android:textColorHint="#32CD32"
+        android:textColorLink="#32CD32"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -28,30 +32,14 @@
         android:ems="10"
         android:hint="Converted value"
         android:inputType="number"
+        android:textColor="#32CD32"
+        android:textColorHint="#32CD32"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/spValoare"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/spValoare"
         app:layout_constraintTop_toBottomOf="@+id/spValoare"
-        app:layout_constraintVertical_bias="0.181" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:backgroundTint="#32CD32"
-        android:hapticFeedbackEnabled="false"
-        android:text="Convert"
-        android:textColorHint="@null"
-        android:textColorLink="@null"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/etFinalValue"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/etFinalValue"
-        app:layout_constraintTop_toBottomOf="@+id/etFinalValue"
-        app:layout_constraintVertical_bias="0.169" />
+        app:layout_constraintVertical_bias="0.11" />
 
     <Spinner
         android:id="@+id/spValoare"
@@ -64,7 +52,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/etYen"
         app:layout_constraintTop_toBottomOf="@+id/etYen"
-        app:layout_constraintVertical_bias="0.086" />
+        app:layout_constraintVertical_bias="0.044" />
 
     <TextView
         android:id="@+id/textView"
@@ -72,6 +60,7 @@
         android:layout_height="wrap_content"
         android:text="Yen Value"
         android:textAlignment="viewStart"
+        android:textColor="#32CD32"
         app:layout_constraintBottom_toTopOf="@+id/etYen"
         app:layout_constraintEnd_toEndOf="@+id/etYen"
         app:layout_constraintHorizontal_bias="0.0"
@@ -80,24 +69,13 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="to value"
-        android:textAlignment="viewStart"
-        app:layout_constraintBottom_toTopOf="@+id/spValoare"
-        app:layout_constraintEnd_toEndOf="@+id/etYen"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/etYen"
-        app:layout_constraintTop_toBottomOf="@+id/etYen"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
         android:id="@+id/textView3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Converted value"
         android:textAlignment="viewStart"
+        android:textColor="#32CD32"
+        android:textColorHint="#32CD32"
         app:layout_constraintBottom_toTopOf="@+id/etFinalValue"
         app:layout_constraintEnd_toEndOf="@+id/spValoare"
         app:layout_constraintHorizontal_bias="0.0"

@@ -1,6 +1,8 @@
 package com.ase.yenconverter;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,18 +30,32 @@ public class MainActivity extends AppCompatActivity {
         EditText etYen=findViewById(R.id.etYen);
         EditText etFinalValue=findViewById(R.id.etFinalValue);
         Spinner spinner=findViewById(R.id.spValoare);
-        Button btnConvert=findViewById(R.id.button2);
 
-        btnConvert.setOnClickListener(v -> {
-            float convertedValue=Float.parseFloat(String.valueOf(etYen.getText()));
-            if(spinner.getSelectedItemPosition()==0){
-                convertedValue/=31.5;
-                etFinalValue.setText(String.valueOf(convertedValue)+" RON");
-            }else{
-                convertedValue/=155;
-                etFinalValue.setText(String.valueOf(convertedValue)+" EURO");
+        etYen.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
             }
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                try{
+                    float convertedValue=Float.parseFloat(String.valueOf(etYen.getText()));
+                    if(spinner.getSelectedItemPosition()==0){
+                        convertedValue/=31.5;
+                        etFinalValue.setText(String.valueOf(convertedValue)+" RON");
+                    }else{
+                        convertedValue/=155;
+                        etFinalValue.setText(String.valueOf(convertedValue)+" EURO");
+                    }
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
         });
     }
 }
