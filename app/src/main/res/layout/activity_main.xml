@@ -14,16 +14,16 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Enter value to convert"
-        android:inputType="number"
+        android:inputType="number|numberDecimal|numberSigned"
         android:textColor="#32CD32"
         android:textColorHint="#32CD32"
         android:textColorLink="#32CD32"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.194"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.406" />
+        app:layout_constraintVertical_bias="0.413" />
 
     <EditText
         android:id="@+id/etFinalValue"
@@ -37,28 +37,41 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/spValoare"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/spValoare"
+        app:layout_constraintStart_toStartOf="@+id/etYen"
         app:layout_constraintTop_toBottomOf="@+id/spValoare"
-        app:layout_constraintVertical_bias="0.11" />
+        app:layout_constraintVertical_bias="0.141" />
 
     <Spinner
         android:id="@+id/spValoare"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
         android:entries="@array/dropDownCurrencies"
         android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/etYen"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/etYen"
-        app:layout_constraintTop_toBottomOf="@+id/etYen"
-        app:layout_constraintVertical_bias="0.044" />
+        app:layout_constraintBottom_toBottomOf="@+id/etYen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.304"
+        app:layout_constraintStart_toEndOf="@+id/etYen"
+        app:layout_constraintTop_toTopOf="@+id/etYen"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Spinner
+        android:id="@+id/spValoare2"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:entries="@array/dropDownCurrencies"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toBottomOf="@+id/etFinalValue"
+        app:layout_constraintEnd_toEndOf="@+id/spValoare"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/etFinalValue"
+        app:layout_constraintTop_toTopOf="@+id/etFinalValue"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Yen Value"
+        android:text="FROM"
         android:textAlignment="viewStart"
         android:textColor="#32CD32"
         app:layout_constraintBottom_toTopOf="@+id/etYen"
@@ -72,14 +85,14 @@
         android:id="@+id/textView3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Converted value"
+        android:text="TO"
         android:textAlignment="viewStart"
         android:textColor="#32CD32"
         android:textColorHint="#32CD32"
         app:layout_constraintBottom_toTopOf="@+id/etFinalValue"
         app:layout_constraintEnd_toEndOf="@+id/spValoare"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/spValoare"
+        app:layout_constraintStart_toStartOf="@+id/etYen"
         app:layout_constraintTop_toBottomOf="@+id/spValoare"
         app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,9 @@ package com.ase.yenconverter;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -16,6 +18,11 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
+    EditText etYen;
+    EditText etFinalValue;
+    Spinner spinner2;
+    Spinner spinner1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,9 +34,12 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        EditText etYen=findViewById(R.id.etYen);
-        EditText etFinalValue=findViewById(R.id.etFinalValue);
-        Spinner spinner=findViewById(R.id.spValoare);
+        etYen=findViewById(R.id.etYen);
+        etFinalValue=findViewById(R.id.etFinalValue);
+        spinner2=findViewById(R.id.spValoare2);
+        spinner1=findViewById(R.id.spValoare);
+        spinner1.setSelection(0);
+        spinner2.setSelection(1);
 
         etYen.addTextChangedListener(new TextWatcher() {
             @Override
@@ -39,23 +49,91 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                try{
-                    float convertedValue=Float.parseFloat(String.valueOf(etYen.getText()));
-                    if(spinner.getSelectedItemPosition()==0){
-                        convertedValue/=31.5;
-                        etFinalValue.setText(String.valueOf(convertedValue)+" RON");
-                    }else{
-                        convertedValue/=155;
-                        etFinalValue.setText(String.valueOf(convertedValue)+" EURO");
-                    }
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
+                schimbValutar();
             }
 
             @Override
             public void afterTextChanged(Editable s) {
             }
         });
+
+        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                schimbValutar();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                schimbValutar();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
+    public void schimbValutar(){
+        try{
+            double convertedValue=Double.parseDouble(String.valueOf(etYen.getText()));
+            double exchangeRate=1.0;
+            switch(spinner1.getSelectedItemPosition()){
+                case 0:{
+                    switch (spinner2.getSelectedItemPosition()){
+                        case 1:{
+                            exchangeRate=31.5;
+                            break;
+                        }
+                        case 2:{
+                            exchangeRate=155.0;
+                            break;
+                        }
+                        default:break;
+                    }
+                    break;
+                }
+                case 1:{
+                    switch (spinner2.getSelectedItemPosition()){
+                        case 0: {
+                            exchangeRate=1/31.5;
+                            break;
+                        }
+                        case 2:{
+                            exchangeRate=1/0.2;
+                            break;
+                        }
+                        default:break;
+                    }
+                    break;
+                }
+                case 2:{
+                    switch (spinner2.getSelectedItemPosition()){
+                        case 0: {
+                            exchangeRate= 1 /155.0;
+                            break;
+                        }
+                        case 1:{
+                            exchangeRate=0.2;
+                            break;
+                        }
+                        default:break;
+                    }
+                    break;
+                }
+            }
+            convertedValue/=exchangeRate;
+            etFinalValue.setText(String.valueOf(convertedValue)+" "+spinner2.getSelectedItem());
+        }catch (Exception e){
+            etFinalValue.setText("");
+        }
     }
 }
