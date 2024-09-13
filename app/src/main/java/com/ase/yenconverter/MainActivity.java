@@ -16,6 +16,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.text.DecimalFormat;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText etYen;
@@ -84,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void schimbValutar(){
         try{
+            DecimalFormat numberFormat = new DecimalFormat("#.00");
             double convertedValue=Double.parseDouble(String.valueOf(etYen.getText()));
             double exchangeRate=1.0;
             switch(spinner1.getSelectedItemPosition()){
@@ -131,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             convertedValue/=exchangeRate;
-            etFinalValue.setText(String.valueOf(convertedValue)+" "+spinner2.getSelectedItem());
+            etFinalValue.setText(String.valueOf(numberFormat.format(convertedValue))+" "+spinner2.getSelectedItem());
         }catch (Exception e){
             etFinalValue.setText("");
         }
