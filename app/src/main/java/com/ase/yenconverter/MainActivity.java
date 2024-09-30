@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             convertedValue/=exchangeRate;
-            etFinalValue.setText(String.valueOf(numberFormat.format(convertedValue))+" "+spinner2.getSelectedItem());
+            etFinalValue.setText(String.valueOf(numberFormat.format(convertedValue)));
         }catch (Exception e){
             etFinalValue.setText("");
         }
